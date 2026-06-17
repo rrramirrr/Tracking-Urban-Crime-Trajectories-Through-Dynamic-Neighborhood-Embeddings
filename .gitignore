@@ -1,0 +1,17 @@
+# Dataset crudo (534 MB — excede límite de GitHub)
+carpetasFGJ_acumulado_2025_01.csv
+
+# Entorno virtual
+venv/
+
+# macOS
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Claude Code settings
+.claude/

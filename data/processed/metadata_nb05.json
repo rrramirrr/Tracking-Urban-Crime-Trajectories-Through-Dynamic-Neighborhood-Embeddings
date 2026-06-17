@@ -1,0 +1,45 @@
+{
+  "n_celdas_con_trayectoria": 748,
+  "n_celdas_pelt": 748,
+  "n_celdas_con_changepoints": 6,
+  "pct_celdas_con_cp": 0.8021390374331552,
+  "total_eventos_cambio": 6,
+  "año_pico_cambios": 2020,
+  "tasa_cambio_global_pct": 62.50703696753612,
+  "n_pares_transicion": 5329,
+  "tipos_trayectoria": {
+    "fragmentada": 379,
+    "fluctuante": 293,
+    "monotónica": 56,
+    "estable": 20
+  },
+  "retencion_por_cluster": {
+    "0": 0.3496199782844734,
+    "1": 0.32782101167315175,
+    "2": 0.38237671786580435,
+    "3": 0.3427230046948357,
+    "4": 0.4647495361781076
+  },
+  "pelt_penalty": 2,
+  "pelt_min_years": 3,
+  "pelt_on_ae_8d": true,
+  "cluster_col": "cluster_km_ae_cos",
+  "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "path_length_ae_mean": 22.369365121239028,
+  "net_disp_ae_mean": 3.7812085414806154,
+  "drift_idx_mean": 0.18157869160894577,
+  "max_step_ae_mean": 4.678582058357496,
+  "n_atipicas_if": 38,
+  "pct_atipicas_if": 5.080213903743315,
+  "contamination_if": 0.05
+}

@@ -1,0 +1,17 @@
+metrica,valor
+registros_fuente,282536
+resolucion_h3_primaria,8
+celdas_h3_8_activas_raw,1114
+celdas_h3_8_validas,748
+unidades_celda_año_raw,9120
+unidades_celda_año_validas,6224
+min_registros_por_unidad,10
+min_años_activos,3
+dim_crime_mix,10
+dim_hourly_profile,4
+dim_weekly_profile,7
+dim_intensity,1
+dim_total,22
+periodo_inicio,2016
+periodo_fin,2024
+normalizacion,StandardScaler

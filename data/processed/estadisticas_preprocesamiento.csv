@@ -1,0 +1,12 @@
+metrica,valor
+registros_dataset_original,2098743.0
+registros_dataset_procesado,282536.0
+porcentaje_retenido,13.46
+columnas_originales,21.0
+columnas_procesadas,13.0
+año_inicio_analisis,2016.0
+año_fin_analisis,2024.0
+alcaldias_representadas,16.0
+categorias_delictivas,10.0
+registros_eliminados_sin_coordenadas,101207.0
+registros_eliminados_fuera_periodo,45674.0

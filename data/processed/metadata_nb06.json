@@ -1,0 +1,34 @@
+{
+  "n_hexagonos": 748,
+  "n_observaciones": 6224,
+  "n_trayectorias": 748,
+  "n_changepoints_pelt": 6,
+  "anos": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "k_clusters": 5,
+  "cluster_col": "cluster_km_ae_cos",
+  "mapas_html": [
+    "mapa_animado_tipologias.html",
+    "mapa_animado_trayectorias.html",
+    "mapa_changepoints.html",
+    "mapa_comparacion_2016_2024.html",
+    "mapa_desplazamiento.html",
+    "mapa_intensidad_heatmap.html",
+    "mapa_lisa.html",
+    "mapa_tipologias_anual.html",
+    "mapa_trayectorias.html"
+  ],
+  "figuras_estaticas": [
+    "mapa_grid_tipologias.png",
+    "mapa_trayectorias_drift.png"
+  ]
+}
