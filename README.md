@@ -1,5 +1,6 @@
 # Tracking Urban Crime Trajectories Through Dynamic Neighborhood Embeddings
 
+![Tests](https://github.com/rrramirrr/Tracking-Urban-Crime-Trajectories-Through-Dynamic-Neighborhood-Embeddings/actions/workflows/api-tests.yml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.9-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.5-red)
