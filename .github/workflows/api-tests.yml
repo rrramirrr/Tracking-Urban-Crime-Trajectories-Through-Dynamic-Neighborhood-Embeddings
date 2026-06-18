@@ -27,8 +27,10 @@ jobs:
       - name: Install dependencies
         working-directory: urbancrime-api
         run: |
+          # Install CPU-only torch first so the next step finds it already satisfied
+          # and skips the default PyPI index (which would download the heavier CUDA build)
           pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
-          pip install -r requirements.txt --no-deps torch
+          pip install -r requirements.txt
           pip install httpx
 
       - name: Run API tests with TestClient
