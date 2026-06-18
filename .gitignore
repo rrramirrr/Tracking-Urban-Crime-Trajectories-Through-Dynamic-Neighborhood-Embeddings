@@ -1,17 +1,17 @@
-# Dataset crudo (534 MB — excede límite de GitHub)
+# ── Datos crudos y derivados pesados ──────────────────────────────────────────
 carpetasFGJ_acumulado_2025_01.csv
+data/processed/fgj_limpio_2016_2024.csv
 
-# Entorno virtual
+# ── Entorno virtual ────────────────────────────────────────────────────────────
 venv/
 
-# macOS
+# ── Artefactos de sistema ──────────────────────────────────────────────────────
 .DS_Store
-
-# Python cache
 __pycache__/
 *.pyc
 *.pyo
 .ipynb_checkpoints/
 
-# Claude Code settings
+# ── Config local ───────────────────────────────────────────────────────────────
 .claude/
+urbancrime-api/.env

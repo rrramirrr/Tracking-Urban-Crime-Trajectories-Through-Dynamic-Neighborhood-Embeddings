@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mounts the pipeline's output data into the container at /data
+      - ../data:/data:ro
+    environment:
+      DATA_DIR: /data/processed
+      MODELS_DIR: /data/models

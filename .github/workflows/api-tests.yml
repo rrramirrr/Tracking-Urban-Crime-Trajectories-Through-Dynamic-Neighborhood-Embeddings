@@ -1,0 +1,99 @@
+name: API smoke tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "urbancrime-api/**"
+      - ".github/workflows/api-tests.yml"
+  pull_request:
+    paths:
+      - "urbancrime-api/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+          cache: pip
+          cache-dependency-path: urbancrime-api/requirements.txt
+
+      - name: Install dependencies
+        working-directory: urbancrime-api
+        run: |
+          pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt --no-deps torch
+          pip install httpx
+
+      - name: Run API tests with TestClient
+        working-directory: urbancrime-api
+        env:
+          DATA_DIR: ../data/processed
+          MODELS_DIR: ../data/models
+          PYTHONPATH: .
+        run: |
+          python - <<'EOF'
+          from app.main import app
+          from fastapi.testclient import TestClient
+
+          client = TestClient(app)
+
+          # Health
+          r = client.get("/health")
+          assert r.status_code == 200
+          body = r.json()
+          assert body["n_cells"] == 748
+          assert body["n_clusters"] == 5
+          print("✅ /health")
+
+          # Cell summary
+          r = client.get("/cells/88499516d9fffff")
+          assert r.status_code == 200
+          assert r.json()["trajectory_type"] in {"estable","fluctuante","fragmentada","monotónica"}
+          print("✅ /cells/{h3_index}")
+
+          # Cell trajectory
+          r = client.get("/cells/88499516d9fffff/trajectory")
+          assert r.status_code == 200
+          assert len(r.json()["year_by_year"]) > 0
+          print("✅ /cells/{h3_index}/trajectory")
+
+          # Clusters list
+          r = client.get("/clusters")
+          assert r.status_code == 200
+          assert len(r.json()) == 5
+          print("✅ /clusters")
+
+          # Cluster detail
+          r = client.get("/clusters/0")
+          assert r.status_code == 200
+          assert r.json()["profile"]["n_cells"] > 0
+          print("✅ /clusters/{id}")
+
+          # Transition matrix diagonal dominant
+          r = client.get("/clusters/transitions")
+          assert r.status_code == 200
+          matrix = r.json()["matrix"]
+          for k, row in matrix.items():
+              assert row[k] == max(row.values()), f"Cluster {k}: diagonal not dominant"
+          print("✅ /clusters/transitions (diagonal dominant)")
+
+          # Live embedding inference
+          r = client.post("/embed", json={"features": [0.0] * 22})
+          assert r.status_code == 200
+          assert len(r.json()["embedding"]) == 8
+          print("✅ /embed")
+
+          # 404 for unknown cell
+          r = client.get("/cells/nonexistent")
+          assert r.status_code == 404
+          print("✅ 404 for unknown cell")
+
+          print("\nAll tests passed.")
+          EOF
